@@ -69,10 +69,5 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 		}
 		
 		
-//		@Bean
-//		@RequestScope
-//		public String[] generos(){
-//			return new String[]{"Masculino","Femenino"};
-//		}
 	}
 
