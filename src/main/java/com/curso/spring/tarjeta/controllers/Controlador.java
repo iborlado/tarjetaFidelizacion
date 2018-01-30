@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.View;
 import org.springframework.http.MediaType;
 
-import com.curso.spring.tarjeta.dto.Usuario;
+import com.curso.spring.tarjeta.dto.UsuarioDTO;
 
 //como hacer un new controller
 @Controller 
@@ -32,7 +32,7 @@ public class Controlador {
 	
 	//para recibir parametros en el path, ej entero llamado id y en el body un objeto tipo Persona
 	@RequestMapping(path="/bienvenida/{id}", method = RequestMethod.GET, consumes= MediaType.APPLICATION_XML_VALUE)
-	public String bienvenida(Map<String, Object> model,  @RequestBody Usuario usuario,@PathVariable int id){
+	public String bienvenida(Map<String, Object> model,  @RequestBody UsuarioDTO usuario,@PathVariable int id){
 		return "miVista";
 	}
 	
@@ -40,7 +40,7 @@ public class Controlador {
 	@RequestMapping(path="/despedida", method = RequestMethod.GET)
 	public View despedida(Model model, @RequestParam int id){
 		//en el index.jsp se puede acceder al atributo ${saludo}
-		model.addAttribute("saludo", "Adios....");
+		model.addAttribute("saludo", "Adios...."+id);
 		return miVista;
 	}
 	
@@ -51,7 +51,7 @@ public class Controlador {
 	 * @return
 	 */
 	@RequestMapping(path="/cambioDeNombre", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_XML_VALUE)
-	@ResponseBody public Usuario cambiarElNombreALaPersona(@RequestBody Usuario usuario, @RequestParam(required=true) String nombreNuevo) {
+	@ResponseBody public UsuarioDTO cambiarElNombreALaPersona(@RequestBody UsuarioDTO usuario, @RequestParam(required=true) String nombreNuevo) {
 		usuario.setNombre(nombreNuevo);
 		return usuario;
 	}

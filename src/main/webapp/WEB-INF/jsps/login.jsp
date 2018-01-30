@@ -15,8 +15,7 @@
 <body>
 <!--  se puede quitar el action pq esta definido get en el formcontrolador -->
 <!-- asegurarse persona exista la primera vez q se cargue el formulario -->
-<%-- 	<form:form action="altaUsuario" modelAttribute="persona"> --%>
-	<form:form modelAttribute="usuario" method="POST">
+	<form:form modelAttribute="login" method="POST">
 		<table>
 			<tr>
 				<td>Nombre:</td>
