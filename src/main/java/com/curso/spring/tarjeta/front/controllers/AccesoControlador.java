@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.curso.spring.tarjeta.dto.ClienteDTO;
 import com.curso.spring.tarjeta.dto.Login;
 import com.curso.spring.tarjeta.dto.OfertaDTO;
 import com.curso.spring.tarjeta.dto.UsuarioDTO;
+import com.curso.spring.tarjeta.services.ServicioCliente;
 import com.curso.spring.tarjeta.services.ServicioUsuario;
 
 //definir endponnts
@@ -27,6 +29,8 @@ public class AccesoControlador {
 	
 	@Autowired
 	ServicioUsuario servicioUsuario;
+	@Autowired
+	ServicioCliente servicioCliente;
 
 	//refactorizar a viewcontroller, los datos del usuario logado ya existe antes de llegar a esta pagina, no hay que precargar nada
 	@GetMapping("/bienvenida")
@@ -106,25 +110,33 @@ public class AccesoControlador {
 	
 	
 	
-/*
-	@ModelAttribute("usuario")
+
+	/*@ModelAttribute("usuario")
 	public UsuarioDTO usuario(){
-		new UsuarioDTO();
+		return new UsuarioDTO();
+	}*/
+	@ModelAttribute("cliente")
+	public ClienteDTO cliente(){
+		return new ClienteDTO();
 	}
 	@GetMapping("/registro")
 	public String registro(){
 		return "registro";
 	}
 	@PostMapping("/registro")
-	public String procesarRegistro(@ModelAttribute UsuarioDTO usuario, Map<String,Object> model){
+	public String procesarRegistro(@ModelAttribute ClienteDTO cliente, Map<String,Object> model){
 		//si error
 		//return "registro";
 		
 		//si exito se entra a bienvenida o a login para que inicie sesion
+		Login clienteNuevo = servicioCliente.altaCLiente(cliente);
+
+		model.put("login", clienteNuevo);
+		System.out.println("registro :  "+clienteNuevo.getNombre());
 		//return "bienvenida";
-		return "login";
+		return "redirect:/login";
 	}
-*/
+
 	//informacion anterior a mostrar esta pagina (dado en el login, sabemos el usuario)
 	@GetMapping("/ofertas")
 	public String ofertas(HttpSession session, Map<String,Object> model){

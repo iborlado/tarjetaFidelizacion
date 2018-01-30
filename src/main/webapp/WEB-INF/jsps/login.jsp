@@ -22,15 +22,13 @@
 				<td><form:input path="nombre" /></td>
 				<!-- mostrar error de ese campo -->
 								<td><form:errors path="nombre" /></td>
-				
 			</tr>
-			 
 			<tr>
 				<td>Password:</td>
-				<td><form:input path="password" /></td>
+				<td><form:password path="password" /></td>
 			</tr>
 			<tr>
-				<td colspan="2">
+				<td colspan="4">
 				<input type="submit" value="Entrar" />
 				</td>
 			</tr>
