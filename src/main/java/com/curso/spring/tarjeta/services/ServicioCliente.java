@@ -12,7 +12,7 @@ import com.curso.spring.tarjeta.dto.UsuarioDTO;
 public interface ServicioCliente {
 
 	public Login altaCLiente(ClienteDTO cliente);
-	public ClienteDTO consultaPuntos(int idCliente);
+	public int consultaPuntos(int idCliente);
 	public List<OfertaDTO> consultaOfertas(int idCliente);
 	public List<ReservaDTO> consultaReservas(int idCliente, int idTarjeta);
 	

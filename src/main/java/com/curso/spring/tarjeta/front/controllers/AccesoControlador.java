@@ -141,9 +141,18 @@ public class AccesoControlador {
 	@GetMapping("/ofertas")
 	public String ofertas(HttpSession session, Map<String,Object> model){
 		//trabajo previo, para recuperar las ofertas del back
-		List<OfertaDTO> ofertas = null;
-		
-		model.put("ofertas", ofertas);
+		List<OfertaDTO>ofertaslistado = null;
+		Object object = session.getAttribute("login");
+		int puntosAcumulados = 0;
+		if (object != null){
+			Login login = (Login)  object;
+			ofertaslistado = servicioCliente.consultaOfertas((int) login.getId());
+			System.out.println("estamos en ofertas, atributos sesion:"+ login.getNombre());
+			System.out.println("ofertas:"+ ofertaslistado.get(0).getDescripcion());
+
+			model.put("nombreLogado", login.getNombre());
+			model.put("ofertas", ofertaslistado);
+		}
 		
 		return "ofertas";
 	}
@@ -157,10 +166,15 @@ public class AccesoControlador {
 	@GetMapping("/puntos")
 	public String puntos(Model model, HttpSession session){
 		Object object = session.getAttribute("login");
+		int puntosAcumulados = 0;
 		if (object != null){
-		Login login = (Login)  object;
-		model.addAttribute("nombreLogado", login.getNombre());
-		System.out.println("estamos en puntos, atributos sesion:"+ login.getNombre());
+			Login login = (Login)  object;
+			model.addAttribute("nombreLogado", login.getNombre());
+			System.out.println("estamos en puntos, atributos sesion:"+ login.getNombre());
+			puntosAcumulados = servicioCliente.consultaPuntos((int) login.getId());
+			model.addAttribute("numPuntos", puntosAcumulados);
+			System.out.println("puntos:"+ puntosAcumulados);
+
 		}
 		return "puntos";
 	}

@@ -7,7 +7,17 @@
 <title>Puntos</title>
 </head>
 <body>
-		Puntos actuales de ${nombreLogado}: 
-	
+		<table>
+			<tr>
+				<td>
+				Puntos actuales de ${nombreLogado}:
+				</td>
+			</tr>
+			<tr>
+				<td>
+				${numPuntos} puntos	
+				</td>
+			</tr>
+		</table>
 </body>
 </html>

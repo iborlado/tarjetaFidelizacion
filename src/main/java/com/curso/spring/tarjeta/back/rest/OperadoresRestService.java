@@ -18,6 +18,8 @@ public class OperadoresRestService {
 	//se puede usar directamente la entidad en vez DTO
 	@PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> acumularPuntos(@RequestBody MovimientoDTO movimiento){
+		System.out.println("atendido por el servicio rest: "+movimiento.getCantidad()
+		+" puntos "+movimiento.getDescripcion());
 		return null;
 		
 	}

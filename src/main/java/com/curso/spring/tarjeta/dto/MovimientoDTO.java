@@ -6,44 +6,49 @@ import com.curso.spring.tarjeta.entities.Movimiento;
 
 public class MovimientoDTO {
 
-	private Movimiento data = new Movimiento();
-
+	private int id;
+	private int idTarjeta;
+	private int idOperador;
+	private int cantidad;
+	private String descripcion;
+	private Date fechaOperacion;
 	public int getId() {
-		return data.getId();
+		return id;
 	}
 	public void setId(int id) {
-		this.data.setId(id);
+		this.id = id;
 	}
 	public int getIdTarjeta() {
-		return data.getIdTarjeta();
+		return idTarjeta;
 	}
 	public void setIdTarjeta(int idTarjeta) {
-		this.data.setIdTarjeta(idTarjeta);
+		this.idTarjeta = idTarjeta;
 	}
 	public int getIdOperador() {
-		return data.getIdOperador();
+		return idOperador;
 	}
 	public void setIdOperador(int idOperador) {
-		this.data.setIdOperador(idOperador);
+		this.idOperador = idOperador;
 	}
 	public int getCantidad() {
-		return data.getCantidad();
+		return cantidad;
 	}
 	public void setCantidad(int cantidad) {
-		this.data.setCantidad(cantidad);
+		this.cantidad = cantidad;
 	}
 	public String getDescripcion() {
-		return data.getDescripcion();
+		return descripcion;
 	}
 	public void setDescripcion(String descripcion) {
-		this.data.setDescripcion(descripcion);
+		this.descripcion = descripcion;
 	}
 	public Date getFechaOperacion() {
-		return data.getFechaOperacion();
+		return fechaOperacion;
 	}
 	public void setFechaOperacion(Date fechaOperacion) {
-		this.data.setFechaOperacion(fechaOperacion);
+		this.fechaOperacion = fechaOperacion;
 	}
+	
 	
 	
 }

@@ -4,21 +4,21 @@ import com.curso.spring.tarjeta.entities.Tarjeta;
 
 public class TarjetaDTO {
 	
-	private Tarjeta data = new Tarjeta();
-
-
+	private int id;
+	private int idCLiente;
 	public int getId() {
-		return data.getId();
+		return id;
 	}
 	public void setId(int id) {
-		this.data.setId(id);
+		this.id = id;
 	}
 	public int getIdCLiente() {
-		return data.getIdCLiente();
+		return idCLiente;
 	}
 	public void setIdCLiente(int idCLiente) {
-		this.data.setIdCLiente(idCLiente);
+		this.idCLiente = idCLiente;
 	}
+	
 	
 	
 	
